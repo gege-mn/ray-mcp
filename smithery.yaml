@@ -1,0 +1,31 @@
+# Smithery configuration for running Ray's local MCP bridge over stdio.
+# The bridge forwards every tool to Ray's hosted MCP endpoint, so the only
+# required setting is the API key.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - rayApiKey
+    properties:
+      rayApiKey:
+        type: string
+        title: Ray API key
+        description: Ray API key (ck_live_...). Create one at https://ray.gege.mn under API keys. Use a key with the write scope to send notifications and edit templates or webhooks.
+      rayMcpUrl:
+        type: string
+        title: Ray MCP endpoint
+        description: Hosted Ray MCP endpoint to bridge to. Leave the default unless you use a staging deployment.
+        default: https://ray-api.gege.mn/mcp
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@gege-mn/ray-mcp'],
+      env: {
+        RAY_API_KEY: config.rayApiKey,
+        ...(config.rayMcpUrl ? { RAY_MCP_URL: config.rayMcpUrl } : {})
+      }
+    })
+  exampleConfig:
+    rayApiKey: ck_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    rayMcpUrl: https://ray-api.gege.mn/mcp

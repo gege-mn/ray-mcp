@@ -1,0 +1,64 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.gege-mn/ray-mcp",
+  "title": "Ray notifications",
+  "description": "Send email, push, Slack, Discord, Telegram and webhook notifications and manage templates with Ray.",
+  "websiteUrl": "https://ray.gege.mn/docs",
+  "repository": {
+    "url": "https://github.com/gege-mn/ray-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@gege-mn/ray-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "RAY_API_KEY",
+          "description": "Ray API key (ck_live_...). Create one at https://ray.gege.mn under API keys; use the write scope to send and edit.",
+          "isRequired": true,
+          "isSecret": true,
+          "placeholder": "ck_live_..."
+        },
+        {
+          "name": "RAY_MCP_URL",
+          "description": "Hosted Ray MCP endpoint to bridge to. Only change this for self-hosted or staging deployments.",
+          "isRequired": false,
+          "isSecret": false,
+          "default": "https://ray-api.gege.mn/mcp",
+          "format": "string"
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://ray-api.gege.mn/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token with your Ray API key, created at https://ray.gege.mn under API keys.",
+          "isRequired": true,
+          "isSecret": true,
+          "value": "Bearer {ray_api_key}",
+          "variables": {
+            "ray_api_key": {
+              "description": "Ray API key (ck_live_...)",
+              "isRequired": true,
+              "isSecret": true,
+              "placeholder": "ck_live_..."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

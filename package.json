@@ -1,0 +1,63 @@
+{
+  "name": "@gege-mn/ray-mcp",
+  "version": "0.1.0",
+  "description": "Local stdio MCP server for Ray, the notification delivery API (email, push, Slack, Discord, Telegram, webhooks). Bridges to Ray's hosted MCP endpoint.",
+  "mcpName": "io.github.gege-mn/ray-mcp",
+  "license": "MIT",
+  "author": "gege.mn",
+  "homepage": "https://ray.gege.mn/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gege-mn/ray-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gege-mn/ray-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "ray",
+    "notifications",
+    "email",
+    "push-notifications",
+    "slack",
+    "discord",
+    "telegram",
+    "webhooks",
+    "ai-agents"
+  ],
+  "type": "module",
+  "bin": {
+    "ray-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "node scripts/smoke.mjs",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  }
+}
