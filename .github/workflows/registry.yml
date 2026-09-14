@@ -1,0 +1,32 @@
+# Publishes server.json to the official MCP Registry without touching npm.
+# Run it by hand (Actions → "MCP Registry" → Run workflow) once the npm
+# version in server.json is live. GitHub OIDC authorizes the
+# io.github.gege-mn/* namespace from the repository owner, so it works
+# regardless of anyone's personal org-membership visibility.
+name: MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mcp-publisher (pinned)
+        run: |
+          curl -sSfL "https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+
+      - name: Validate
+        run: ./mcp-publisher validate
+
+      - name: Log in with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish
+        run: ./mcp-publisher publish
