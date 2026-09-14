@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Smoke-tests the built binary (dist/index.js) over real stdio on the current
 // Node version: once without an API key and once against a local fake of Ray's
-// hosted endpoint. Run `npm run build` first.
+// hosted endpoint. Run `pnpm build` first.
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';

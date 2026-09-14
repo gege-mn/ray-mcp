@@ -263,15 +263,15 @@ The local package always starts, even when something is wrong, and explains the 
 ## Development
 
 ```bash
-npm ci
-npm run typecheck
-npm test        # vitest: bridge end to end against an in-process fake Ray endpoint
-npm run build   # tsup -> dist/index.js
-npm run smoke   # the built binary over real stdio
+pnpm install
+pnpm typecheck
+pnpm test        # vitest: bridge end to end against an in-process fake Ray endpoint
+pnpm build       # tsup -> dist/index.js
+pnpm smoke       # the built binary over real stdio
 RAY_MCP_URL=http://localhost:8787/mcp RAY_API_KEY=ck_live_... node dist/index.js
 ```
 
-Releasing: bump the version in `package.json`, `server.json` (both `version` fields) and `src/version.ts`, update `CHANGELOG.md`, then publish a GitHub release tagged `vX.Y.Z`. The publish workflow ships to npm and the MCP Registry.
+Releasing: bump the version in `package.json`, `server.json` (both `version` fields) and `src/version.ts`, update `CHANGELOG.md`, then publish a GitHub release tagged `vX.Y.Z`. The publish workflow ships to npm and the MCP Registry. To publish by hand instead: `pnpm publish --access public`, then run the **MCP Registry** workflow (a personal `mcp-publisher login github` can't publish under the gege-mn namespace).
 
 ## License
 
