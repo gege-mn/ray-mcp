@@ -46,7 +46,7 @@ export interface Bridge {
 const FALLBACK_SERVER_INFO: Implementation = { name: 'ray', title: 'Ray notifications', version: VERSION };
 
 const ABOUT_RAY =
-  'Ray is a multi-tenant notification delivery API (email, FCM push, Slack, Discord, Telegram and generic webhooks), not the Ray distributed computing framework. Docs: https://ray.gege.mn/llms.txt';
+  'Ray is a multi-tenant notification delivery API (email, FCM push, Slack, Discord, Telegram, SMS via Twilio or sendsms.mn, and generic webhooks), not the Ray distributed computing framework. Docs: https://ray.gege.mn/llms.txt';
 
 function textResult(text: string, isError: boolean): CallToolResult {
   return { content: [{ type: 'text', text }], isError };

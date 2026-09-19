@@ -1,7 +1,7 @@
 {
   "name": "@gege-mn/ray-mcp",
   "version": "0.1.0",
-  "description": "Local stdio MCP server for Ray, the notification delivery API (email, push, Slack, Discord, Telegram, webhooks). Bridges to Ray's hosted MCP endpoint.",
+  "description": "Local stdio MCP server for Ray, the notification delivery API (email, push, Slack, Discord, Telegram, SMS, webhooks). Bridges to Ray's hosted MCP endpoint.",
   "mcpName": "io.github.gege-mn/ray-mcp",
   "license": "MIT",
   "author": "gege.mn",
@@ -24,6 +24,7 @@
     "slack",
     "discord",
     "telegram",
+    "sms",
     "webhooks",
     "ai-agents"
   ],

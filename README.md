@@ -6,7 +6,7 @@
 
 MCP server for **[Ray](https://ray.gege.mn)**, the notification delivery API. It lets Claude, Cursor, VS Code, Windsurf, Codex, Zed and any other MCP client send notifications and manage templates, delivery webhooks and usage in your Ray workspace.
 
-> Ray here is the multi-tenant notification API from gege.mn (email via Amazon SES or SMTP, Firebase push, Slack, Discord, Telegram, generic webhooks and an in-app feed). It is **not** the Ray distributed computing framework.
+> Ray here is the multi-tenant notification API from gege.mn (email via Amazon SES or SMTP, Firebase push, Slack, Discord, Telegram, SMS via Twilio or sendsms.mn, generic webhooks and an in-app feed). It is **not** the Ray distributed computing framework.
 
 ## Hosted or local?
 
